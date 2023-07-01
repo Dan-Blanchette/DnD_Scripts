@@ -28,42 +28,59 @@ def rand_encounter(number, monster):
          print("The party faces: ", monster[rand_num])
          print("The number rolled was", rand_num)
       case 5:
-         print("Two encounters;  Rolling 2d4.")
+         print("Two encounters!  Rolling 2d4.")
          value1 = random.randrange(1, 4)
-         print("The number rolled was", value1)
+         print("d4 #1 rolled: ", value1)
          value2 = random.randrange(1, 4)
-         print("The number rolled was", value2)
-         print("Encounter_1:", rand_encounter(value1, monster))
-         print("Encounter_2:", rand_encounter(value2, monster))
+         print("d4 #2 rolled: ", value2)
+         print("Special Encounter 1: ")
+         rand_encounter(value1, monster)
+         print("Special Encounter 2: ")
+         rand_encounter(value2, monster)
       case 6:
-         print("Two encounters;  Rolling 2d4.")
+         print("Two encounters!  Rolling 2d4.")
          value1 = random.randrange(1, 4)
-         print("The number rolled was", value1)
+         print("d4 #1 rolled: ", value1)
          value2 = random.randrange(1, 4)
-         print("The number rolled was", value2)
-         print("Encounter_1:", rand_encounter(value1, monster))
-         print("Encounter_2:", rand_encounter(value2, monster))
+         print("d4 #2 rolled: ", value2)
+         print("Special Encounter 1: ")
+         rand_encounter(value1, monster)
+         print("Special Encounter 2: ")
+         rand_encounter(value2, monster)
       case 7:
-         print("No encounter.")
+         print("No Encounter.")
       case 8:
-         print("No encounter.")
+         print("No Encounter.")
       case _:
          print("no matching case!")
-# Rand Encounter Monsters list (edit as needed)
-monsters = ['Yeti', 'Goliath werebear', 'Crag cats', 'Coldlight walker', 'Ice troll',
-            'Frost druid and friends', 'Chardalyn berserkers', 'Frost Giant riding a mammoth',
-            'Battlehammer dwarves', 'Arveiaturace(Ancient white dragon)', 'Snowy Owlbear',
-            'Gnolls', 'Orcs of the Many-Arrows tribe', 'Goliath party', 'Chwinga', 'Awakened beast',
-            'Icewind kobolds', 'Humans', 'Herd of beasts', 'Perytons']
 
-hours = input("How many hours is your party travelling? ")
-days = num_days(int(hours))
+def main():
+   # Rand Encounter Monsters list (edit as needed)
+   monsters = ['Yeti', 'Goliath Werebear', 'Crag Cats', 'Coldlight Walker', 'Ice Troll',
+               'Frost Druid and Friends', 'Chardalyn Berserkers', 'Frost Giant Riding a Mammoth',
+               'Battlehammer Dwarves', 'Arveiaturace(Ancient White Dragon)', 'Snowy Owlbear',
+               'Gnolls', 'Orcs of the Many-Arrows Tribe', 'Goliath Party', 'Chwinga', 'Awakened Beast',
+               'Icewind kobolds', 'Humans', 'Herd of beasts', 'Perytons']
 
-if days == 1:
-   rand_num = random.randrange(1, 8)
-   rand_encounter(rand_num, monsters)
-else:
-   for i in range(days):
+   hours = input("How many hours is your party travelling?[24 hours min]: ")
+   # make sure they party is travelling at least one day
+   if int(hours) < 24:
+      print('Please enter at least 24 hours')
+      exit(0)
+   else:
+      days = num_days(int(hours))
+
+   if days == 1:
       rand_num = random.randrange(1, 8)
-      print(f"Encounter %d: ", i)
       rand_encounter(rand_num, monsters)
+      print("\n")
+   else:
+      for i in range(days):
+         print(f"Encounter {i+1}: ")
+         rand_num = random.randrange(1, 8)
+         # print(f"Encounter {i+1}: ", i)
+         rand_encounter(rand_num, monsters)
+         print("\n")
+
+if __name__=="__main__":
+   main()
