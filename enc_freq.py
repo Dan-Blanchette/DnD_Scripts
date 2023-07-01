@@ -1,3 +1,10 @@
+''' 
+ Author: Dan Blanchette
+ Date: July 1, 2023
+ Description: This Program will generate random overworld encounters for the Dungeon Master (User).
+'''
+
+
 import random
 
 def num_days(hours):
